@@ -8,12 +8,13 @@ import { PostService } from './post.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  posts$: Observable<any>;
   isLoading$: Observable<boolean>;
+  errors$: Observable<any>;
+  posts$: Observable<any>;
 
   constructor(private postService: PostService) {
-    this.posts$ = this.postService.entities$;
     this.isLoading$ = this.postService.loading$;
-    this.postService.getAll();
+    this.errors$ = this.postService.errors$;
+    this.posts$ = this.postService.getAll();
   }
 }
